@@ -1,0 +1,36 @@
+!!!
+%html(xmlns="http://www.w3.org/1999/xhtml" lang="ru" xml:lang="ru")
+  %head
+    %title= "Twiborg"
+    %meta{ 'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8' }
+    %meta{ 'name'=>"keywords", :content => "" }
+    %meta{ 'name'=>"description", :content => "" }
+    %link{ 'type' => 'image/x-icon', 'rel' => 'icon', 'href' => "/images/favicon.ico" }
+    = javascript_include_tag 'jquery', 'jquery_ui', 'wysiwyg', 'functions'
+    = stylesheet_link_tag 'style'
+    = yield :head
+  %body
+    #container
+      #header
+        #title
+          = "Twiborg"
+          %span= 'Slogan'
+        .logged
+          %p
+            - if !current_user
+              - form_for User.new, :url => account_path do |f|
+                = oauth_register_button :value => "Register with Twitter", :class => 'button'
+              - form_for UserSession.new, :url => user_session_path do |f|
+                = oauth_login_button :value => "Login with Twitter", :class => 'button'
+            - else
+              = render current_user
+              %p
+                = link_to "My Account", account_path
+                |
+                = link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?"
+      #sidebar= yield :sidebar
+      #main
+        #content
+          = render 'layouts/flash_messages'
+          = yield
+      #footer

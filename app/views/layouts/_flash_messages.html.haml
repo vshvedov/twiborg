@@ -1,0 +1,4 @@
+- %w(notice warning error).each do |msg|
+  - unless flash[msg.to_sym].blank?
+    = render :partial => "layouts/flash_#{msg}", :locals => {:msg => flash[msg.to_sym]}
+.clear

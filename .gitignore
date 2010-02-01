@@ -1,0 +1,7 @@
+log/*
+test/*
+config/database.yml
+config/environments/development.rb
+db/schema.rb
+.DS_Store
+tmp/*

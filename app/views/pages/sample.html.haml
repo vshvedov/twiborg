@@ -1,0 +1,691 @@
+!!! XML
+!!! Strict
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %title
+      Black Admin v2
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
+    %style{ :type => "text/css", :media => "all" }
+      @import url(css/style.css);
+      img {behavior:url('js/iepngfix.htc') !important;}
+    %script{ :src => "js/jquery.js", :type => "text/javascript" }
+    %script{ :src => "js/jquery_ui.js", :type => "text/javascript" }
+    %script{ :src => "js/wysiwyg.js", :type => "text/javascript" }
+    %script{ :src => "js/functions.js", :type => "text/javascript" }
+  %body
+    #container
+      /
+        Container
+      #header
+        /
+          Header
+        #title
+          Black Admin v2
+          %span
+            Professional CMS Administrator Skin
+        .logged
+          %p
+            Good morning,
+            %a{ :href => "#", :title => "" }
+              Administrator
+            \!
+          %p
+            %a{ :href => "#" }
+              My Account
+            |
+            %a{ :href => "#" }
+              Sign Out
+          %p
+            You have
+            %a{ :href => "#" }
+              12 unred messages
+            \!
+      #sidebar
+        /
+          Sidebar
+        .sidebox
+          %span.stitle
+            Navigation
+          #navigation
+            /
+              Navigation begins here
+            .sidenav
+              /
+                Sidenav
+              .navhead_blank
+                %span
+                  %a{ :href => "#", :title => "" }
+                    Dashboard
+              .navhead
+                %span
+                  Articles
+              .subnav{ :style => "display: none;" }
+                %ul.submenu
+                  %li
+                    %a{ :href => "#", :title => "" }
+                      Write a new Article
+                  %li
+                    %a{ :href => "#", :title => "" }
+                      Manage Articles
+                  %li
+                    %a{ :href => "#", :title => "" }
+                      Manage Comments
+                  %li
+                    %a{ :href => "#", :title => "" }
+                      Manage Categories
+              .navhead
+                %span
+                  Events Calendar
+              .subnav{ :style => "display: none;" }
+                %ul.submenu
+                  %li
+                    %a{ :href => "#", :title => "" }
+                      Submenu Item 1
+                  %li
+                    %a{ :href => "#", :title => "" }
+                      Submenu Item 2
+                  %li
+                    %a{ :href => "#", :title => "" }
+                      Submenu Item 3
+              .navhead
+                %span
+                  Pages
+              .subnav{ :style => "display: none;" }
+                %ul.submenu
+                  %li
+                    %a{ :href => "#", :title => "" }
+                      Submenu Item 1
+                  %li
+                    %a{ :href => "#", :title => "" }
+                      Submenu Item 2
+                  %li
+                    %a{ :href => "#", :title => "" }
+                      Submenu Item 3
+                  %li
+                    %a{ :href => "#", :title => "" }
+                      Submenu Item 4
+              .navhead
+                %span
+                  Image Gallery
+              .subnav{ :style => "display: none;" }
+                %ul.submenu
+                  %li
+                    %a{ :href => "#", :title => "" }
+                      Submenu Item 1
+                  %li
+                    %a{ :href => "#", :title => "" }
+                      Submenu Item 2
+                  %li
+                    %a{ :href => "#", :title => "" }
+                      Submenu Item 3
+              .navhead
+                %span
+                  Settings
+              .subnav{ :style => "display: none;" }
+                %ul.submenu
+                  %li
+                    %a{ :href => "#", :title => "" }
+                      Submenu Item 1
+                  %li
+                    %a{ :href => "#", :title => "" }
+                      Submenu Item 2
+                  %li
+                    %a{ :href => "#", :title => "" }
+                      Submenu Item 3
+          /
+            END Navigation
+        .sidebox
+          %span.stitle
+            Additional Panel
+          #datepicker.hasDatepicker
+            .ui-datepicker-inline.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all
+              .ui-datepicker-header.ui-widget-header.ui-helper-clearfix.ui-corner-all
+                %a.ui-datepicker-prev.ui-corner-all{ :title => "Prev", :onclick => "DP_jQuery.datepicker._adjustDate('#datepicker', -1, 'M');" }
+                  %span.ui-icon.ui-icon-circle-triangle-w
+                    Prev
+                %a.ui-datepicker-next.ui-corner-all{ :title => "Next", :onclick => "DP_jQuery.datepicker._adjustDate('#datepicker', +1, 'M');" }
+                  %span.ui-icon.ui-icon-circle-triangle-e
+                    Next
+                .ui-datepicker-title
+                  %span.ui-datepicker-month
+                    January
+                  %span.ui-datepicker-year
+                    2010
+              %table.ui-datepicker-calendar
+                %thead
+                  %tr
+                    %th.ui-datepicker-week-end
+                      %span{ :title => "Sunday" }
+                        Su
+                    %th
+                      %span{ :title => "Monday" }
+                        Mo
+                    %th
+                      %span{ :title => "Tuesday" }
+                        Tu
+                    %th
+                      %span{ :title => "Wednesday" }
+                        We
+                    %th
+                      %span{ :title => "Thursday" }
+                        Th
+                    %th
+                      %span{ :title => "Friday" }
+                        Fr
+                    %th.ui-datepicker-week-end
+                      %span{ :title => "Saturday" }
+                        Sa
+                %tbody
+                  %tr
+                    %td.ui-datepicker-week-end.ui-datepicker-other-month.ui-datepicker-unselectable.ui-state-disabled
+                       
+                    %td.ui-datepicker-other-month.ui-datepicker-unselectable.ui-state-disabled
+                       
+                    %td.ui-datepicker-other-month.ui-datepicker-unselectable.ui-state-disabled
+                       
+                    %td.ui-datepicker-other-month.ui-datepicker-unselectable.ui-state-disabled
+                       
+                    %td.ui-datepicker-other-month.ui-datepicker-unselectable.ui-state-disabled
+                       
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        1
+                    %td.ui-datepicker-week-end{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        2
+                  %tr
+                    %td.ui-datepicker-week-end{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        3
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        4
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        5
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        6
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        7
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        8
+                    %td.ui-datepicker-week-end{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        9
+                  %tr
+                    %td.ui-datepicker-week-end{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        10
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        11
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        12
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        13
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        14
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        15
+                    %td.ui-datepicker-week-end{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        16
+                  %tr
+                    %td.ui-datepicker-week-end{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        17
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        18
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        19
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        20
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        21
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        22
+                    %td.ui-datepicker-week-end{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        23
+                  %tr
+                    %td.ui-datepicker-week-end{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        24
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        25
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        26
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        27
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        28
+                    %td{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        29
+                    %td.ui-datepicker-week-end{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default{ :href => "#" }
+                        30
+                  %tr
+                    %td.ui-datepicker-week-end.ui-datepicker-days-cell-over.ui-datepicker-current-day.ui-datepicker-today{ :onclick => "DP_jQuery.datepicker._selectDay('#datepicker',0,2010, this);return false;" }
+                      %a.ui-state-default.ui-state-highlight.ui-state-active.ui-state-hover{ :href => "#" }
+                        31
+                    %td.ui-datepicker-other-month.ui-datepicker-unselectable.ui-state-disabled
+                       
+                    %td.ui-datepicker-other-month.ui-datepicker-unselectable.ui-state-disabled
+                       
+                    %td.ui-datepicker-other-month.ui-datepicker-unselectable.ui-state-disabled
+                       
+                    %td.ui-datepicker-other-month.ui-datepicker-unselectable.ui-state-disabled
+                       
+                    %td.ui-datepicker-other-month.ui-datepicker-unselectable.ui-state-disabled
+                       
+                    %td.ui-datepicker-week-end.ui-datepicker-other-month.ui-datepicker-unselectable.ui-state-disabled
+                       
+        .sidebox
+          %span.stitle
+            Photo gallery
+          .gallery
+            %img{ :src => "images/1.jpg", :height => "75", :alt => "", :width => "100" }
+            %img{ :src => "images/2.jpg", :height => "75", :alt => "", :width => "100" }
+            %img{ :src => "images/3.jpg", :height => "75", :alt => "", :width => "100" }
+            %img{ :src => "images/4.jpg", :height => "75", :alt => "", :width => "100" }
+            %img{ :src => "images/5.jpg", :height => "75", :alt => "", :width => "100" }
+            %img{ :src => "images/6.jpg", :height => "75", :alt => "", :width => "100" }
+        .sidebox
+          %span.stitle
+            Sales information
+          %p
+            %b
+              103 products
+            sold today.
+          %p
+            %b
+              213 products
+            sold yesterday.
+          %p
+            %b
+              More information:
+          %p
+            Cras scelerisque dolor in quam. Cras eu nunc. Integer bibendum nisl quis sem. Aenean sed tortor non eros vehicula vehicula. Maecenas vitae enim. Donec neque. Cras lacus. Cras in ligula sed justo fringilla porttitor.
+      /
+        END Sidebar
+      #main
+        /
+          Main, right side content
+        #content
+          /
+            Content begins here
+          %ul.modals
+            %li
+              %a{ :href => "#" }
+                %img{ :src => "iconsee/pencil_48.png", :alt => "Write an article" }
+                %span
+                  Write an article
+            %li
+              %a{ :href => "#" }
+                %img{ :src => "iconsee/diagram_48.png", :alt => "View statistics" }
+                %span
+                  View statistics
+            %li
+              %a{ :href => "#" }
+                %img{ :src => "iconsee/letter_48.png", :alt => "Check inbox" }
+                %span
+                  Check inbox
+            %li
+              %a{ :href => "#" }
+                %img{ :src => "iconsee/clipboard_48.png", :alt => "To-do list" }
+                %span
+                  Todo list
+            %li
+              %a{ :href => "#" }
+                %img{ :src => "iconsee/gear_48.png", :alt => "Settings" }
+                %span
+                  Settings
+            %li
+              %a{ :href => "#" }
+                %img{ :src => "iconsee/save_48.png", :alt => "Save this!" }
+                %span
+                  Save this!
+          %h2
+            Tables
+          %table{ :cellspacing => "0", :border => "0", :cellpadding => "0" }
+            /
+              Table
+            %thead
+              %tr
+                %th
+                  %input.checkall{ :type => "checkbox" }
+                %th
+                  No
+                %th
+                  Status
+                %th
+                  Customer Name
+                %th
+                  Views
+                %th
+                  Date
+                %th
+                  Actions
+            %tbody
+              %tr
+                %td
+                  %input{ :type => "checkbox" }
+                %td
+                  1
+                %td
+                  Approved
+                %td
+                  Lorem ipsum
+                %td
+                  273
+                %td
+                  6.12.2009
+                %td
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_add.png", :alt => "Add" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_remove.png", :alt => "Remove" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_check.png", :alt => "Check" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_delete.png", :alt => "Delete" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/folder.png", :alt => "Folder" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/letter.png", :alt => "Letter" }
+              %tr.alt
+                %td
+                  %input{ :type => "checkbox" }
+                %td
+                  2
+                %td
+                  Approved
+                %td
+                  Ipsum Dolor
+                %td
+                  5096
+                %td
+                  1.23.2009
+                %td
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_add.png", :alt => "Add" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_remove.png", :alt => "Remove" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_check.png", :alt => "Check" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_delete.png", :alt => "Delete" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/folder.png", :alt => "Folder" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/letter.png", :alt => "Letter" }
+              %tr
+                %td
+                  %input{ :type => "checkbox" }
+                %td
+                  3
+                %td
+                  Pending
+                %td
+                  Dolor sit
+                %td
+                  0
+                %td
+                  3.17.2009
+                %td
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_add.png", :alt => "Add" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_remove.png", :alt => "Remove" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_check.png", :alt => "Check" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_delete.png", :alt => "Delete" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/folder.png", :alt => "Folder" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/letter.png", :alt => "Letter" }
+              %tr.alt
+                %td
+                  %input{ :type => "checkbox" }
+                %td
+                  4
+                %td
+                  Declined
+                %td
+                  Sit Amet
+                %td
+                  192
+                %td
+                  9.30.2009
+                %td
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_add.png", :alt => "Add" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_remove.png", :alt => "Remove" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_check.png", :alt => "Check" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_delete.png", :alt => "Delete" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/folder.png", :alt => "Folder" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/letter.png", :alt => "Letter" }
+              %tr
+                %td
+                  %input{ :type => "checkbox" }
+                %td
+                  5
+                %td
+                  Pending
+                %td
+                  Amet Lorem
+                %td
+                  501
+                %td
+                  10.01.2009
+                %td
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_add.png", :alt => "Add" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_remove.png", :alt => "Remove" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_check.png", :alt => "Check" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/action_delete.png", :alt => "Delete" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/folder.png", :alt => "Folder" }
+                  %a{ :href => "#" }
+                    %img{ :src => "assets/letter.png", :alt => "Letter" }
+          /
+            END Table
+          %h2
+            Notifications
+          .warning
+            .warn_icon
+              /
+            %a.close{ :href => "#", :title => "Close this notification" }
+              x
+            .desc
+              %span
+                Warning!
+              %p
+                Mauris molestie, nisi ac elementum convallis, sapien odio sollicitudin mi, vel pellentesque nunc erat at sapien.
+          .err
+            .err_icon
+              /
+            %a.close{ :href => "#", :title => "Close this notification" }
+              x
+            .desc
+              %span
+                Error!
+              %p
+                Ut fermentum, quam non eleifend molestie, velit nisl mattis eros, sit amet imperdiet diam justo sed augue.
+          .succes
+            .succes_icon
+              /
+            %a.close{ :href => "#", :title => "Close this notification" }
+              x
+            .desc
+              %span
+                Success!
+              %p
+                Ut fermentum, quam non eleifend molestie, velit nisl mattis eros, sit amet imperdiet diam justo sed augue.
+          .clear
+            /
+          %h2
+            Forms and buttons
+          %p
+            In aliquam sagittis urna. Suspendisse potenti. Mauris eu ante ut enim semper egestas. Donec eros justo, tempor eu, condimentum non, fringilla sed, mauris. Fusce massa arcu, fringilla vitae, pulvinar pretium, viverra at, libero. Morbi elit. Integer dapibus. Pellentesque ut ipsum et metus rhoncus vehicula. Quisque fringilla tincidunt lorem. Proin sed erat. Curabitur sit amet risus in dolor tempor adipiscing.
+          %form{ :method => "post", :action => "#" }
+            /
+              Form
+            /
+              Fieldset
+            %fieldset
+              %legend
+                This is a simple fieldset
+              .input_field
+                %label{ :for => "sf" }
+                  Small field:
+                %input.smallfield{ :name => "sf", :type => "text", :value => "input text" }
+                %span.field_desc
+                  Field description
+              .input_field
+                %label{ :for => "mf" }
+                  Medium Field:
+                %input.mediumfield{ :name => "mf", :type => "text", :value => "" }
+                %span.validate_success
+                  A positive message!
+              .input_field
+                %label{ :for => "lf" }
+                  Large Field:
+                %input.bigfield{ :name => "lf", :type => "text", :value => "" }
+                %span.validate_error
+                  A negative message!
+              .input_field
+                %label{ :for => "che" }
+                  Linecheckboxes:
+                %span.form_line
+                  %input.checkbox{ :name => "che", :type => "checkbox" }
+                  Lorem Ipsum
+                %span.form_line
+                  %input.checkbox{ :name => "che", :type => "checkbox" }
+                  Lorem Ipsum
+                %span.form_line
+                  %input.checkbox{ :name => "che", :type => "checkbox" }
+                  Lorem Ipsum
+                %span.form_line
+                  %input.checkbox{ :name => "che", :type => "checkbox" }
+                  Lorem Ipsum
+              .input_field
+                %label{ :for => "dropdown" }
+                  DropDown:
+                %select.dropdown{ :name => "dropdown" }
+                  %option
+                    United States
+                  %option
+                    Other Country
+              .input_field
+                %label
+                  Vertical:
+                .column
+                  %span.form_line
+                    %input.checkbox{ :name => "che", :type => "checkbox" }
+                    Lorem Ipsum
+                  %span.form_line
+                    %input.checkbox{ :name => "che", :type => "checkbox" }
+                    Lorem Ipsum
+                  %span.form_line
+                    %input.checkbox{ :name => "che", :type => "checkbox" }
+                    Lorem Ipsum
+                  %span.form_line
+                    %input.checkbox{ :name => "che", :type => "checkbox" }
+                    Lorem Ipsum
+                .column
+                  %span.form_line
+                    %input.radio{ :type => "radio" }
+                    Lorem Ipsum
+                  %span.form_line
+                    %input.radio{ :type => "radio" }
+                    Lorem Ipsum
+                  %span.form_line
+                    %input.radio{ :type => "radio" }
+                    Lorem Ipsum
+                  %span.form_line
+                    %input.radio{ :type => "radio" }
+                    Lorem Ipsum
+              .input_field
+                %textarea{ :rows => "10", :cols => "50" }
+              .input_field.no_margin_bottom
+                %input.submit{ :type => "submit", :value => "Submit" }
+                %input.submit{ :type => "reset", :value => "Reset" }
+                %a.button{ :href => "#" }
+                  A button
+            /
+              End of fieldset
+          /
+            \/Form
+          /
+            The paginator
+          %ul.paginator
+            %li
+              %a{ :href => "#" }
+                Previous
+            %li.current
+              %a{ :href => "#" }
+                1
+            %li
+              %a{ :href => "#" }
+                2
+            %li
+              %a{ :href => "#" }
+                3
+            %li
+              %a{ :href => "#" }
+                4
+            %li
+              %a{ :href => "#" }
+                5
+            %li
+              %a{ :href => "#" }
+                6
+            %li
+              %a{ :href => "#" }
+                7
+            %li
+              %a{ :href => "#" }
+                8
+            %li
+              %a{ :href => "#" }
+                9
+            %li
+              %a{ :href => "#" }
+                Next
+          /
+            Paginator end
+        /
+          END Content
+      #footer
+        %p
+          Copyright yourwebsitename 2009. All rights reserved.
+    /
+      END Container
+    #ui-datepicker-div.ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all.ui-helper-hidden-accessible
