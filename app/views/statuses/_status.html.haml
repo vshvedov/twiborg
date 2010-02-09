@@ -1,0 +1,10 @@
+.status-node{:class => [status.project.follow?(status.from_user) ? 'follow' : nil, status.project.follower?(status.from_user) ? 'follower' : nil].join(' ')}
+  .avatar= image_tag status.profile_image_url, :width => 48
+  .author= link_to status.from_user, "http://twitter.com/#{status.from_user}"
+  .text= h status.text
+  .timestamp= l status.created_at, :format => :short
+  .clearboth
+- status.project.follow?(status.from_user).cdebug :st
+- status.from_user_id.cdebug :from_user_id
+- status.project.follows.find_by_twitter_uid(status.from_user_id).cdebug :project_follow
+- Follower.find_by_twitter_uid(status.from_user_id).cdebug :follow

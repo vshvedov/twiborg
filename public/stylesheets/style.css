@@ -402,6 +402,48 @@ cursor : pointer;
  height:15px;
 }
 
+.clearboth {
+ clear:both;
+}
+
+.floatleft{
+  float:left;
+}
+
+.alignleft{
+  float:left;
+  margin:5px 10px 0 0;
+}
+
+
+.status-node{
+  margin:5px 0;
+  width:85%;
+}
+.status-node.follower{
+  background-color:#163016;
+}
+.status-node.follow{
+  border:1px solid #99ff33;
+}
+.status-node .avatar{
+  background-color: #161616;
+  float:left;
+  margin:5px 10px 5px 5px;
+  padding:5px;
+  border:1px solid slategray;
+}
+.status-node .author{
+  float:left;
+  margin:0 10px 0 0;
+  font-weight: bold;
+}
+.status-node .author{
+  float:left;
+  margin:0 10px 0 0;
+}
+
+
 .navhead span, .navhead_blank span { 
 width:100%;
 text-align:center;

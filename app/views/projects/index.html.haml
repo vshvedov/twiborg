@@ -1,0 +1,8 @@
+%h2 Listing projects
+- if !@projects.empty?
+  .projects
+    = render :partial => "project", :collection => @projects
+  = will_paginate(@projects)
+- else
+  %p There are no projects to show yet.
+= link_to 'New project', new_project_path

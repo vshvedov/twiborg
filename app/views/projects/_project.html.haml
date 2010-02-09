@@ -1,0 +1,10 @@
+.navhead
+  %span= project.name
+.subnav{ :style => "display: none;" }
+  %ul.submenu
+    /%li= link_to 'Timeline', project
+    %li= link_to 'Keywords', keywords_project_url(project)
+    %li= link_to 'Followers', followers_project_url(project)
+    %li= link_to 'Follows', follows_project_url(project)
+    %li= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
+

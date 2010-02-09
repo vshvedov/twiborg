@@ -1,0 +1,8 @@
+.sidebox
+  %span.stitle= 'Projects'
+  #navigation
+    - if current_user
+      .sidenav
+        .navhead_blank
+          %span= link_to 'Create project', new_project_path
+        = render current_user.projects, :as => :proj

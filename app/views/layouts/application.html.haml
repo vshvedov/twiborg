@@ -5,7 +5,7 @@
     %meta{ 'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8' }
     %meta{ 'name'=>"keywords", :content => "" }
     %meta{ 'name'=>"description", :content => "" }
-    %link{ 'type' => 'image/x-icon', 'rel' => 'icon', 'href' => "/images/favicon.ico" }
+    %link{ 'type' => 'image/x-icon', 'rel' => 'icon', 'href' => "/favicon.ico" }
     = javascript_include_tag 'jquery', 'jquery_ui', 'wysiwyg', 'functions'
     = stylesheet_link_tag 'style'
     = yield :head
@@ -17,18 +17,17 @@
           %span= 'Slogan'
         .logged
           %p
-            - if !current_user
-              - form_for User.new, :url => account_path do |f|
-                = oauth_register_button :value => "Register with Twitter", :class => 'button'
-              - form_for UserSession.new, :url => user_session_path do |f|
-                = oauth_login_button :value => "Login with Twitter", :class => 'button'
+            - unless logged_in?
+              = link_to "Sign Up", registration_url
+              |
+              = link_to "Sign In", login_url
             - else
               = render current_user
               %p
                 = link_to "My Account", account_path
                 |
-                = link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?"
-      #sidebar= yield :sidebar
+                = link_to "Logout", logout_path
+      #sidebar= render 'layouts/sidebar'
       #main
         #content
           = render 'layouts/flash_messages'

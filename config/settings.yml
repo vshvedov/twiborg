@@ -1,0 +1,6 @@
+development: 
+  consumer_key: 'PwVJaajHnZnRjDtt5FgmHA'
+  consumer_secret: 'CVomRTGyJ6UiGieNAMSI5vWNlhcOqtp8iaXVuG4TGw'
+production: 
+  consumer_key: 'PwVJaajHnZnRjDtt5FgmHA'
+  consumer_secret: 'CVomRTGyJ6UiGieNAMSI5vWNlhcOqtp8iaXVuG4TGw'

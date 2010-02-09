@@ -1,0 +1,13 @@
+%h2 Keywords
+%ul.keywords
+  = render @project.keywords
+- form_for Keyword.new do |f|
+  %fieldset
+    %legend New keyword
+    .input_field
+      = f.label :query, "Query"
+      = f.text_field :query, :class => :smallfield
+      %span.field_desc Query for statuses search
+    .input_field.no_margin_bottom
+      = f.hidden_field :project_id, :value => @project.id
+      = f.submit "Create", :disable_with => 'Createing...', :class => :submit

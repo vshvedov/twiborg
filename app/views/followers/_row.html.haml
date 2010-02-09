@@ -1,0 +1,7 @@
+%tr{:class => @alt ? 'alt' : nil}
+  %td= follow.follower.twitter_uid
+  %td= link_to "@#{follow.follower.name}", "http://twitter.com/#{follow.follower.name}", :popup => true
+  %td= follow.follower.followers_count
+  %td= follow.follower.friends_count
+  %td= image_tag(follow.following ? 'action_check.png' : 'action_delete.png')
+- @alt = !@alt

@@ -40,5 +40,12 @@ $(document).ready(function() {
 		}
 	);
 
-
+  // statuses
+  $('ul.keywords ul.statuses').hide();
+  $('ul.keywords a.unwrap').live('click', function(){
+    $('ul.statuses.unwraped').slideUp('slow').removeClass('unwraped');
+    $(this).parent().find('ul.statuses').slideDown('slow');
+    $(this).parent().find('ul.statuses').addClass('unwraped')
+    return false;
+  })
 });

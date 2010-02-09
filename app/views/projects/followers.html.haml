@@ -1,0 +1,16 @@
+%h1= "Project \"#{@project.name}\""
+
+%h2= 'Followers'
+%table
+  %thead
+    %tr
+      %th= 'ID'
+      %th= 'Name'
+      %th= 'Followers'
+      %th= 'Follows'
+      %th= 'Follow?'
+  %tbody
+    = render :partial => 'followers/row', :collection => @project.project_followers, :as => :follow
+%ul
+  %li= link_to 'Edit', edit_project_path(@project)
+  %li= link_to 'Back', projects_path
