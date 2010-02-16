@@ -1,19 +1,5 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
-
-  # === List of columns ===
-  #   id                        : integer 
-  #   name                      : string 
-  #   twitter_uid               : string 
-  #   avatar_url                : string 
-  #   atoken                    : string 
-  #   asecret                   : string 
-  #   remember_token            : string 
-  #   remember_token_expires_at : datetime 
-  #   created_at                : datetime 
-  #   updated_at                : datetime 
-  # =======================
-
   validates_presence_of :name
   validates_uniqueness_of :name
   validates_presence_of :twitter_uid
@@ -48,7 +34,24 @@ class User < ActiveRecord::Base
   def client
     @client ||= begin
       oauth.authorize_from_access(atoken, asecret)
-      Twitter::Base.new(oauth)
+      Twi.new(oauth)
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                        :integer(4)      not null, primary key
+#  name                      :string(255)
+#  twitter_uid               :string(255)
+#  avatar_url                :string(255)
+#  atoken                    :string(255)     not null
+#  asecret                   :string(255)     not null
+#  remember_token            :string(255)
+#  remember_token_expires_at :datetime
+#  created_at                :datetime
+#  updated_at                :datetime
+#
+

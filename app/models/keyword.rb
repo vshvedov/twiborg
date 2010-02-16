@@ -1,23 +1,13 @@
 class Keyword < ActiveRecord::Base
-
-  # === List of columns ===
-  #   id             : integer 
-  #   query          : string 
-  #   project_id     : integer 
-  #   created_at     : datetime 
-  #   updated_at     : datetime 
-  #   last_search_at : datetime 
-  # =======================
-
   validates_presence_of :query
   validates_presence_of :project_id
 
   belongs_to :project
-  has_many :statuses
+  has_many :statuses, :dependent => :destroy
 
   # after_create :search
 
-  KEYWORD_SEARCH_INTRRVAL = 60
+  KEYWORD_SEARCH_INTRRVAL = 30
 
   def search
     if self.statuses.blank?
@@ -46,3 +36,16 @@ class Keyword < ActiveRecord::Base
     self.all(:conditions => ['last_search_at IS NULL OR last_search_at < ?', Time.now.utc - KEYWORD_SEARCH_INTRRVAL]).each{|k|k.search}
   end
 end
+
+# == Schema Information
+#
+# Table name: keywords
+#
+#  id             :integer(4)      not null, primary key
+#  query          :string(255)
+#  project_id     :integer(4)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  last_search_at :datetime
+#
+

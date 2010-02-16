@@ -5,3 +5,4 @@ config/environments/development.rb
 db/schema.rb
 .DS_Store
 tmp/*
+daemons/pids/

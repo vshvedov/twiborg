@@ -5,3 +5,7 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+IventType.create(:name => 'retweet')
+IventType.create(:name => 'follow')
+IventType.create(:name => 'unfollow')
+IventType.create(:name => 'limit')

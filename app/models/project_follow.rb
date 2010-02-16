@@ -1,15 +1,23 @@
 class ProjectFollow < ActiveRecord::Base
-
-  # === List of columns ===
-  #   id          : integer 
-  #   project_id  : integer 
-  #   follower_id : integer 
-  #   following   : boolean 
-  #   created_at  : datetime 
-  #   updated_at  : datetime 
-  #   followed_at : datetime 
-  # =======================
-
   belongs_to :project
   belongs_to :follower
+
+  def after_create
+    self.project.start_follow(follower.name)
+    puts 'FOLLOW', "\t@#{follower.name}"
+  end
 end
+
+# == Schema Information
+#
+# Table name: project_follows
+#
+#  id          :integer(4)      not null, primary key
+#  project_id  :integer(4)
+#  follower_id :integer(4)
+#  following   :boolean(1)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  followed_at :datetime
+#
+
