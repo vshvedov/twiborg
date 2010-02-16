@@ -1,8 +1,8 @@
 class Status < ActiveRecord::Base
   FOLLOWS_IN_INTERVAL = 5 # Amount of new follows per follow interval
   FOLLOW_INTERVAL = 1200 # Interval for new follows
-  NEXT_FOLLOW_INTERVAL = 20 # Interval between two successive follows
-  RETWEET_INTERVAL = 60 # Interval before retweet next status
+  NEXT_FOLLOW_INTERVAL = 120 # Interval between two successive follows
+  RETWEET_INTERVAL = 120 # Interval before retweet next status
   RETWEET_INTERVAL_DELTA = 300 # Delta to random increate retweet interval
 
   validates_presence_of :keyword_id

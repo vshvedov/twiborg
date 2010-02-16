@@ -46,6 +46,14 @@ class Project < ActiveRecord::Base
     @oauth ||= Twitter::OAuth.new(APP_CONFIG[:consumer_key], APP_CONFIG[:consumer_secret], :sign_in => true)
   end
 
+  def count_ivents from_date, to_date, type
+    self.ivents.count(
+    :conditions => ['created_at <= :date_to AND created_at >= :date_from AND ivent_type_id = :type', {
+      :date_from => from_date, 
+      :date_to => to_date, 
+      :type => IventType.get(type).id}])
+  end
+
   # Twitter methods
   def is_follower? screen_name
     begin

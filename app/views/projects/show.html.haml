@@ -1,0 +1,12 @@
+- content_for :head do
+  = javascript_include_tag 'swfobject', 'chart'
+%ul.chart-controls{:rel => 'ivents-graph'}
+  %li= link_to 'Day', '#', :rel => 'day'
+  %li= link_to 'Month', '#', :rel => 'month'
+  %li= link_to 'Year', '#', :rel => 'year'
+  %li= link_to 'Earlier', '#', :rel => '-'
+  %li= link_to 'Later', '#', :rel => '+'
+  %input{:type => 'hidden', :class => 'unit', :value => 'month'}
+  %input{:type => 'hidden', :class => 'offset', :value => 0}
+  %input{:type => 'hidden', :id => 'project_id', :value => @project.id}
+#ivents-graph

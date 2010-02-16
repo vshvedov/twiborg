@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  include OpenFlashChart
 
   before_filter :find_project
 
@@ -83,6 +84,66 @@ class ProjectsController < ApplicationController
       format.html
       format.xml  { render :xml => @project }
     end
+  end
+
+  def ivents_graph
+    chart = Chart.new()
+    chart.title = Title.new(:text => "#{@project.name} activity")
+    offset = params[:offset].to_i
+    case params[:unit]
+    when 'day'
+      start_date = Date.today() - (1 + offset).day
+      end_date = Date.today() - offset.day
+      step = 1.hour
+    when 'year'
+      start_date = Date.today() - (1 + offset).year
+      end_date = Date.today() - offset.year
+      step = 7.days
+    else
+      start_date = Date.today() - (1 + offset).month
+      end_date = Date.today() - offset.month
+      step = 1.day
+    end
+    retweets_bar = Area.new(:text => 'Retweets')
+    retweets_bar.tip = 'Retweets: #val#'
+    follows_bar = Area.new(:text => 'Follows')
+    follows_bar.tip = 'Follows: #val#'
+    limits_bar = Area.new(:text => 'Limits')
+    limits_bar.tip = 'Limits: #val#'
+    @x_max = @y_max = 0
+
+    @x_labels = XAxisLabels.new(:rotate => -90)
+    while start_date < end_date
+      start_date += step
+      @x_labels << {:text => I18n::l(start_date, :format => :short)}
+      # retweets
+      amount = @project.count_ivents(start_date, start_date + step, 'retweet')
+      @x_max = amount if amount > @x_max.to_i
+      retweets_bar << amount
+      # follows
+      amount = @project.count_ivents(start_date, start_date + step, 'follow')
+      @x_max = amount if amount > @x_max.to_i
+      follows_bar << amount
+      # limits
+      amount = @project.count_ivents(start_date, start_date + step, 'limit')
+      @x_max = amount if amount > @x_max.to_i
+      limits_bar << amount
+      @y_max = @y_max.to_i + 1
+    end
+    
+    chart << retweets_bar
+    chart << follows_bar
+    chart << limits_bar
+    
+    chart.y_axis = YAxis.new({
+      :steps => @x_max/15,
+      :min => 0,
+      :max => (@x_max + @x_max/10)
+    })
+    x_axis = XAxis.new(:max => @y_max)
+    x_axis.labels = @x_labels
+    chart.x_axis = x_axis
+    render :text => chart
   end
 
   def update

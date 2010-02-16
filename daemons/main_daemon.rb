@@ -15,7 +15,7 @@ puts '-initializing'
 require File.dirname(__FILE__) + '/../config/environment.rb'
 
 if RAILS_ENV == "development" or RAILS_ENV == "test"
-  SLEEP_TIME = 10
+  SLEEP_TIME = 30
 else
   SLEEP_TIME = 600
 end

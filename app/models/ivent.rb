@@ -6,7 +6,7 @@ class Ivent < ActiveRecord::Base
   validates_presence_of :project_id
 
   def self.put project_id, ivent_type_name
-    create(:project_id => project_id, :ivent_type_id => IventType.get(ivent_type_name))
+    create(:project_id => project_id, :ivent_type_id => IventType.get(ivent_type_name).id)
   end
 end
 
