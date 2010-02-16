@@ -30,12 +30,12 @@ class Status < ActiveRecord::Base
   def start_follow
     if self.can_follow?
       follower = Follower.find_by_name(self.from_user) || Follower.get_by_twitter_uid(self.project, self.from_user)
-      self.project.project_follows << ProjectFollow.new(:follower_id => follower.id, :following => (self.project.is_follower?(follower.name))) 
+      self.project.project_follows << ProjectFollow.new(:follower_id => follower.id, :following => (self.project.is_follower?(follower.name))) unless follower.nil?
     end
   end
 
   def can_follow?
-    self.project.follows.find_by_name(from_user).nil? && self.project.project_follows.count(:conditions => ['created_at > ?', Time.now - FOLLOW_INTERVAL]) < FOLLOWS_IN_INTERVAL && self.project.project_follows.last.created_at < Time.now - NEXT_FOLLOW_INTERVAL
+    self.project.follows.find_by_name(from_user).nil? && (self.project.project_follows.blank? || self.project.project_follows.count(:conditions => ['created_at > ?', Time.now - FOLLOW_INTERVAL]) < FOLLOWS_IN_INTERVAL && self.project.project_follows.last.created_at < Time.now - NEXT_FOLLOW_INTERVAL) && self.project.name != from_user
   end
 end
 

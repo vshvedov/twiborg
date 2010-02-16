@@ -52,6 +52,7 @@ class Project < ActiveRecord::Base
       client.friendship_exists?(screen_name, name)
     rescue Twitter::RateLimitExceeded
       self.ivents << Ivent.put(id, 'limit')
+      nil
     end
   end
 
@@ -60,6 +61,7 @@ class Project < ActiveRecord::Base
       client.friendship_exists?(name, screen_name)
     rescue Twitter::RateLimitExceeded
       self.ivents << Ivent.put(id, 'limit')
+      nil
     end
   end
 
@@ -68,6 +70,7 @@ class Project < ActiveRecord::Base
       client.user(screen_name)
     rescue Twitter::RateLimitExceeded
       self.ivents << Ivent.put(id, 'limit')
+      nil
     end
   end
 
@@ -79,6 +82,7 @@ class Project < ActiveRecord::Base
       end
     rescue Twitter::RateLimitExceeded
       self.ivents << Ivent.put(id, 'limit')
+      nil
     end
   end
 
@@ -88,6 +92,7 @@ class Project < ActiveRecord::Base
       self.ivents << Ivent.put(id, 'retweet')
     rescue Twitter::RateLimitExceeded
       self.ivents << Ivent.put(id, 'limit')
+      nil
     end
   end
 

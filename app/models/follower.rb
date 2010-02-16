@@ -12,16 +12,19 @@ class Follower < ActiveRecord::Base
   end
 
   def self.get(profile)
-    new_follower = self.find_by_name(profile.screen_name) || self.new
+    unless profile.blank?
+      puts "PROFILE: #{profile.inspect}"
+      new_follower = self.find_by_name(profile.screen_name) || self.new
     
-    new_follower.name = profile.screen_name unless profile.screen_name.blank?
-    new_follower.twitter_uid = profile.id unless profile.id.blank?
-    new_follower.avatar_url = profile.profile_image_url unless profile.profile_image_url.blank?
-    new_follower.followers_count = profile.followers_count unless profile.followers_count.blank?
-    new_follower.friends_count = profile.friends_count unless profile.friends_count.blank?
+      new_follower.name = profile.screen_name unless profile.screen_name.blank?
+      new_follower.twitter_uid = profile.id unless profile.id.blank?
+      new_follower.avatar_url = profile.profile_image_url unless profile.profile_image_url.blank?
+      new_follower.followers_count = profile.followers_count unless profile.followers_count.blank?
+      new_follower.friends_count = profile.friends_count unless profile.friends_count.blank?
 
-    new_follower.errors.each{|e| puts("ERRORS\n"+e.join(" "))} unless new_follower.save
-    new_follower
+      new_follower.errors.each{|e| puts("ERRORS\n"+e.join(" "))} unless new_follower.save
+      new_follower
+    end
   end
 end
 

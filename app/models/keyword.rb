@@ -18,16 +18,17 @@ class Keyword < ActiveRecord::Base
     puts "\n\nproject: @#{self.project.name} \t:keyword: #{query} \t#{new_tweets.size} new tweets from:"
     new_tweets.each do |res|
       puts "\t\t@#{res.from_user}"
-      
-      self.statuses << (Status.find_by_twitter_id(res.id) || Status.new({
-        :profile_image_url => res.profile_image_url,
-        :from_user => res.from_user,
-        :from_user_id => res.from_user_id,
-        :to_user_id => res.to_user_id,
-        :text => res.text,
-        :source => res.source,
-        :twitter_id => res.id
-      }))
+      unless res.nil?
+        self.statuses << (Status.find_by_twitter_id(res.id) || Status.new({
+          :profile_image_url => res.profile_image_url,
+          :from_user => res.from_user,
+          :from_user_id => res.from_user_id,
+          :to_user_id => res.to_user_id,
+          :text => res.text,
+          :source => res.source,
+          :twitter_id => res.id
+        }))
+      end
     end
     self.update_attribute :last_search_at, Time.now.utc
   end
