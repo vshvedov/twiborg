@@ -19,32 +19,25 @@ class Project < ActiveRecord::Base
   has_many :retweets
   has_many :ivents
 
-  after_create :refresh_followers, :refresh_follows
+  after_create :refresh_followers
 
   def refresh_followers
-    client.followers.each do |f|
-      if self.followers.count(:conditions => {:twitter_uid => f.id}) == 0
-        new_follower = Follower.get(f)
-        self.project_followers << ProjectFollower.new(:follower_id => new_follower.id, :following => f.following)
-      end
+    client.followers.each do |profile|
+      follower = Follower.find_by_screen_name(profile.screen_name) || Follower.create(profile)
+      self.project_followers << ProjectFollower.new(:follower_id => follower.id, :following => profile.following) unless follower?(profile.screen_name)
     end
-  end
-
-  def refresh_follows
-    client.friends.each do |f|
-      if self.follows.count(:conditions => {:twitter_uid => f.id}) == 0
-        new_follow = Follower.get(f)
-        self.project_follows << ProjectFollow.new(:follower_id => new_follow.id, :following => client.friend_ids(:id => f.id).include?(twitter_uid))
-      end
+    client.friends.each do |profile|
+      follower = Follower.find_by_screen_name(profile.screen_name) || Follower.create(profile)
+      self.project_follows << ProjectFollow.new(:follower_id => follower.id, :following => follower?(profile.screen_name)) unless follow?(profile.screen_name)
     end
   end
 
   def follower?(name)
-    followers.count(:conditions => {:name => name}) != 0
+    followers.count(:conditions => {:screen_name => name}) != 0
   end
 
   def follow?(name)
-    follows.count(:conditions => {:name => name}) != 0
+    follows.count(:conditions => {:screen_name => name}) != 0
   end
 
   def oauth

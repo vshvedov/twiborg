@@ -2,8 +2,8 @@ class ProjectFollow < ActiveRecord::Base
   belongs_to :project
   belongs_to :follower
 
-  def after_create
-    self.project.start_follow(follower.name)
+  def start_follow
+    self.project.start_follow(follower.screen_name)
   end
 end
 
