@@ -29,6 +29,7 @@ class Twi < Twitter::Base
     super
   end
 
+
   def log_message mes
     puts "\033[1;33;44m#{mes}\033[0m"
     RAILS_DEFAULT_LOGGER.info "\033[1;33;44m#{mes}\033[0m" unless RAILS_DEFAULT_LOGGER.nil?
