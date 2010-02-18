@@ -1,7 +1,9 @@
 class Project < ActiveRecord::Base
   validates_presence_of :user_id
   validates_presence_of :name
+  validates_uniqueness_of :name
   validates_presence_of :twitter_uid
+  validates_uniqueness_of :twitter_uid
   validates_presence_of :atoken
   validates_presence_of :asecret
   validates_presence_of :follows_in_interval
