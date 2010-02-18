@@ -1,9 +1,4 @@
 class Status < ActiveRecord::Base
-  FOLLOWS_IN_INTERVAL = 5 # Amount of new follows per follow interval
-  FOLLOW_INTERVAL = 1200 # Interval for new follows
-  NEXT_FOLLOW_INTERVAL = 120 # Interval between two successive follows
-  RETWEET_INTERVAL = 120 # Interval before retweet next status
-  RETWEET_INTERVAL_DELTA = 300 # Delta to random increate retweet interval
 
   validates_presence_of :keyword_id
   validates_presence_of :twitter_id
@@ -24,7 +19,7 @@ class Status < ActiveRecord::Base
   end
 
   def can_retweet?
-    !(self.text =~ /.*(http\:\/\/[^\s\n]+).*/).nil? && (self.text + self.from_user + 'RT @: ').length < 140 && (self.project.retweets.blank? || self.project.retweets.last.created_at < Time.now - RETWEET_INTERVAL - rand(RETWEET_INTERVAL_DELTA))
+    !(self.text =~ /.*(http\:\/\/[^\s\n]+).*/).nil? && (self.text + self.from_user + 'RT @: ').length < 140 && (self.project.retweets.blank? || self.project.retweets.last.created_at < Time.now - self.project.retweet_interval - rand(self.project.retweet_interval_delta))
   end
 
   def start_follow
@@ -35,7 +30,7 @@ class Status < ActiveRecord::Base
   end
 
   def can_follow?
-    self.project.follows.find_by_name(from_user).nil? && (self.project.project_follows.blank? || self.project.project_follows.count(:conditions => ['created_at > ?', Time.now - FOLLOW_INTERVAL]) < FOLLOWS_IN_INTERVAL && self.project.project_follows.last.created_at < Time.now - NEXT_FOLLOW_INTERVAL) && self.project.name != from_user
+    self.project.follows.find_by_name(from_user).nil? && (self.project.project_follows.blank? || self.project.project_follows.count(:conditions => ['created_at > ?', Time.now - self.project.follow_interval]) < self.project.follows_in_interval && self.project.project_follows.last.created_at < Time.now - self.project.next_follow_interval) && self.project.name != from_user
   end
 end
 

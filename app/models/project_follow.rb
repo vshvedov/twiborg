@@ -4,7 +4,6 @@ class ProjectFollow < ActiveRecord::Base
 
   def after_create
     self.project.start_follow(follower.name)
-    puts 'FOLLOW', "\t@#{follower.name}"
   end
 end
 

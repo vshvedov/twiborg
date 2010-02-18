@@ -13,7 +13,6 @@ class Follower < ActiveRecord::Base
 
   def self.get(profile)
     unless profile.blank?
-      puts "PROFILE: #{profile.inspect}"
       new_follower = self.find_by_name(profile.screen_name) || self.new
     
       new_follower.name = profile.screen_name unless profile.screen_name.blank?

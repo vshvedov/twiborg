@@ -149,11 +149,14 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        flash[:notice] = 'Project was successfully updated.'
+        notice('Project was successfully updated.')
         format.html { redirect_to @project }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html do
+          error('Can`t update project')
+          render :action => "show"
+        end
         format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
       end
     end

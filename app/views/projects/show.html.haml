@@ -1,12 +1,40 @@
 - content_for :head do
   = javascript_include_tag 'swfobject', 'chart'
+#ivents-graph
 %ul.chart-controls{:rel => 'ivents-graph'}
   %li= link_to 'Day', '#', :rel => 'day'
   %li= link_to 'Month', '#', :rel => 'month'
   %li= link_to 'Year', '#', :rel => 'year'
+  %li.separator
   %li= link_to 'Earlier', '#', :rel => '-'
   %li= link_to 'Later', '#', :rel => '+'
   %input{:type => 'hidden', :class => 'unit', :value => 'month'}
   %input{:type => 'hidden', :class => 'offset', :value => 0}
   %input{:type => 'hidden', :id => 'project_id', :value => @project.id}
-#ivents-graph
+.clearboth
+- form_for @project do |f|
+  %fieldset
+    %legend Project settings
+    = f.error_messages
+    .input_field
+      = f.label :follow_interval
+      = f.text_field :follow_interval, :class => 'smallfield'
+      = f.error_message_on :follow_interval, :css_class => "validate_error"
+    .input_field
+      = f.label :follows_in_interval
+      = f.text_field :follows_in_interval, :class => 'smallfield'
+      = f.error_message_on :follows_in_interval, :css_class => "validate_error"
+    .input_field
+      = f.label :next_follow_interval
+      = f.text_field :next_follow_interval, :class => 'smallfield'
+      = f.error_message_on :next_follow_interval, :css_class => "validate_error"
+    .input_field
+      = f.label :retweet_interval
+      = f.text_field :retweet_interval, :class => 'smallfield'
+      = f.error_message_on :retweet_interval, :css_class => "validate_error"
+    .input_field
+      = f.label :retweet_interval_delta
+      = f.text_field :retweet_interval_delta, :class => 'smallfield'
+      = f.error_message_on :retweet_interval_delta, :css_class => "validate_error"
+    .input_field.no_margin_bottom
+      = f.submit "Submit", :disable_with => 'Submiting...', :class => 'submit'

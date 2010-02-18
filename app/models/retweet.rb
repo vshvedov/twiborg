@@ -14,7 +14,6 @@ class Retweet < ActiveRecord::Base
 
   def after_create
     self.project.send_tweet("RT @#{from_user}: #{text}")
-    puts 'RETWEET', "\tRT @#{from_user}: #{text}"
   end
 end
 

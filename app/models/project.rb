@@ -4,6 +4,11 @@ class Project < ActiveRecord::Base
   validates_presence_of :twitter_uid
   validates_presence_of :atoken
   validates_presence_of :asecret
+  validates_presence_of :follows_in_interval
+  validates_presence_of :follow_interval
+  validates_presence_of :next_follow_interval
+  validates_presence_of :retweet_interval
+  validates_presence_of :retweet_interval_delta
 
   belongs_to :user
   has_many :project_follows, :dependent => :destroy
@@ -114,18 +119,24 @@ private
   end
 end
 
+
 # == Schema Information
 #
 # Table name: projects
 #
-#  id          :integer(4)      not null, primary key
-#  user_id     :integer(4)
-#  name        :string(255)
-#  twitter_uid :string(255)
-#  avatar_url  :string(255)
-#  atoken      :string(255)     not null
-#  asecret     :string(255)     not null
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id                     :integer(4)      not null, primary key
+#  user_id                :integer(4)
+#  name                   :string(255)
+#  twitter_uid            :string(255)
+#  avatar_url             :string(255)
+#  atoken                 :string(255)     not null
+#  asecret                :string(255)     not null
+#  created_at             :datetime
+#  updated_at             :datetime
+#  follows_in_interval    :integer(4)      default(5)
+#  follow_interval        :integer(4)      default(1200)
+#  next_follow_interval   :integer(4)      default(120)
+#  retweet_interval       :integer(4)      default(120)
+#  retweet_interval_delta :integer(4)      default(300)
 #
 

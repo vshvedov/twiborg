@@ -1,16 +1,25 @@
 class Twi < Twitter::Base
   def user id
-    puts "Twi.user\t\t#{id}"
+    log_message "Twi.user\t\t#{id}"
     super
   end
 
   def update text
-    puts "Twi.update\t\t#{text}"
+    log_message "Twi.update\t\t#{text}"
     super
   end
 
   def friendship_exists? a, b
-    puts "Twi.friendship_exists?\t\t#{a}\t#{b}"
+    log_message "Twi.friendship_exists?\t\t#{a}\t#{b}"
     super
+  end
+
+  def friendship_create screen_name, follow
+    log_message "Twi.start_follow\t\t#{screen_name}"
+    super
+  end
+
+  def log_message mes
+    puts "\033[1;33;44m#{mes}\033[0m"
   end
 end
