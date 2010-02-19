@@ -23,6 +23,9 @@ class Project < ActiveRecord::Base
 
   after_create :refresh_followers
 
+  PROJECT_SYNCHRONIZATION_INTERVAL = 1.day.to_i
+  UNFOLLOW_INTERVAL = 1.week.to_i
+
   def refresh_followers
     client.followers.each do |profile|
       follower = Follower.find_by_screen_name(profile.screen_name) || Follower.create(profile)
@@ -32,6 +35,13 @@ class Project < ActiveRecord::Base
       follower = Follower.find_by_screen_name(profile.screen_name) || Follower.create(profile)
       self.project_follows << ProjectFollow.new(:follower_id => follower.id, :following => follower?(profile.screen_name)) unless follow?(profile.screen_name)
     end
+  end
+
+  def clean_followers
+    real_followers = client.followers.map{|f| f.screen_name}
+    real_friends = client.friends.map{|f| f.screen_name}
+    project_followers.each{|f| f.destroy unless real_followers.include?(f.follower.screen_name) }
+    project_follows.each{|f| f.destroy unless real_friends.include?(f.follower.screen_name) }
   end
 
   def follower?(name)
@@ -104,6 +114,14 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def self.synchronization
+    self.all(:conditions => ['synchronized_at IS NULL OR synchronized_at < ?', Time.now.utc - PROJECT_SYNCHRONIZATION_INTERVAL]).each do |project|
+      puts "\tsynch #{project.name}"
+      project.refresh_followers
+      project.clean_followers
+    end
+  end
+
 private
 
   def client
@@ -113,6 +131,7 @@ private
     end
   end
 end
+
 
 
 # == Schema Information
@@ -133,5 +152,6 @@ end
 #  next_follow_interval   :integer(4)      default(120)
 #  retweet_interval       :integer(4)      default(120)
 #  retweet_interval_delta :integer(4)      default(300)
+#  synchronized_at        :datetime
 #
 

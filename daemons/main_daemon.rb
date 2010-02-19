@@ -22,7 +22,10 @@ end
 
 loop do
   puts '-run'
-  Keyword.periodic_search.size
+  puts '-search'
+  Keyword.periodic_search
+  puts '-synchronization'
+  Project.synchronization
   puts '-sleep'
   sleep(SLEEP_TIME)
 end
